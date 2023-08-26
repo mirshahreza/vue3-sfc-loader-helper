@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Vue dynamic component loading....</title>
+
+    <script src="/lib/vue@3.3.4.global.js"></script>
+    <script src="/lib/vue3-sfc-loader.js"></script>
+    
+    <script src="/lib/vue3-sfc-loader-helper.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <sfc:three sfc-path="components/three.vue" title="Loaded from components/three.vue">.</sfc:three>
+        <br />
+        <sfc:four sfc-path="four.vue" title="Loaded from four.vue">.</sfc:four>
+    </div>
+    <script>   
+        // for production version change this line
+        const fake = "fake_" + (new Date()).getTime();
+        //const fake = "fake_" + "staticvalue";
+
+        const app = Vue.createApp({});
+        registerComponents(document.getElementById("app").innerHTML);
+        app.mount("#app");
+    </script>
+</body>
+</html>
